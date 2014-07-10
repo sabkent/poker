@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div data-ng-app="poker" data-ng-controller="lobbyController">
+    <input type="button" data-ng-click="refreshGames()" value="refresh" />
+    
+    <div data-ng-repeat="game in games" data-ng-cloak>{{game.Name}}</div>
+
+    <input type="button" data-ng-click="joinGame()" />
+</div>
+
+@section scripts{
+    <script>
+        var app = angular.module('poker', []).run(function(signalrService) {
+            signalrService.connect();
+        });
+    </script>
+
+    <script src="~/Scripts/app/controllers/LobbyController.js"></script>
+    <script src="~/Scripts/app/services/signalrHubService.js"></script>
+    <script src="~/Scripts/app/services/lobbyService.js"></script>
+}

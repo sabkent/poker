@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Core", "Poker.Core\Poker.Core.csproj", "{53D907D1-BB20-4765-B193-73B3BF1DC56B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Application", "Poker.Application\Poker.Application.csproj", "{5BBD902B-9317-4FF3-8E3F-6DFD0F46330A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Api", "Poker.Api\Poker.Api.csproj", "{96751874-DA5B-4711-ADF4-94813C63924D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Client", "Poker.Client\Poker.Client.csproj", "{049D36D7-D779-4E1C-9C02-6BF3D0396CAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53D907D1-BB20-4765-B193-73B3BF1DC56B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D907D1-BB20-4765-B193-73B3BF1DC56B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D907D1-BB20-4765-B193-73B3BF1DC56B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D907D1-BB20-4765-B193-73B3BF1DC56B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BBD902B-9317-4FF3-8E3F-6DFD0F46330A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BBD902B-9317-4FF3-8E3F-6DFD0F46330A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BBD902B-9317-4FF3-8E3F-6DFD0F46330A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BBD902B-9317-4FF3-8E3F-6DFD0F46330A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96751874-DA5B-4711-ADF4-94813C63924D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96751874-DA5B-4711-ADF4-94813C63924D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96751874-DA5B-4711-ADF4-94813C63924D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96751874-DA5B-4711-ADF4-94813C63924D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{049D36D7-D779-4E1C-9C02-6BF3D0396CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{049D36D7-D779-4E1C-9C02-6BF3D0396CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{049D36D7-D779-4E1C-9C02-6BF3D0396CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{049D36D7-D779-4E1C-9C02-6BF3D0396CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
