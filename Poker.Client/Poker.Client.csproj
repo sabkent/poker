@@ -205,6 +205,7 @@
     <Compile Include="Hubs\Lobby.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GameListItem.cs" />
+    <Compile Include="Models\GameSummary.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Representations\PlayerJoinedGame.cs" />
     <Compile Include="PokerServiceProxy.cs" />
@@ -225,6 +226,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Index.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-cookies.js" />
@@ -245,9 +247,11 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\controllers\GameController.js" />
+    <Content Include="Scripts\app\controllers\GameSummaryController.js" />
     <Content Include="Scripts\app\controllers\LobbyController.js" />
-    <Content Include="Scripts\app\services\lobbyService.js" />
-    <Content Include="Scripts\app\services\signalrHubService.js" />
+    <Content Include="Scripts\app\services\GameService.js" />
+    <Content Include="Scripts\app\services\LobbyService.js" />
+    <Content Include="Scripts\app\services\SignalrHubService.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
@@ -555,6 +559,10 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Templates\Detail.html" />
+    <Content Include="Templates\GameSummary.html" />
+    <Content Include="Templates\List.html" />
+    <Content Include="Templates\Lobby.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -583,6 +591,7 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Home\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

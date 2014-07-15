@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+
+@section scripts{
+    <script>
+        //var lobby = $.connection.lobby;
+
+        //lobby.client.onGameSummaryReceived = function () {
+        //    console.log('on game summary received');
+        //};
+
+        $.connection.hub.start().done(function() {
+            var proxy = $.connection["lobby"];
+            proxy.client.onGameSummaryReceived = function () {
+                console.log('on game summary received');
+            };
+            proxy.server.requestGameSummary();
+        });
+    </script>
+}

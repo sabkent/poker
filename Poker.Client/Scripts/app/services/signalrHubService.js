@@ -1,20 +1,30 @@
 ﻿(function (app, signalr) {
 
-    function signalrService() {
+    function signalrService($rootScope, $q) {
+        this.rootScope = $rootScope;
+        this.q = $q;
         this.signalrConnection = signalr;
-        this.connect();
+        this.connected = false;
     }
 
     signalrService.prototype = {
         connect: function () {
-            this.signalrConnection.hub.start(function () {
-                console.log('hub started in sercvice');
-            }).fail(function () {
-                console.log('hub failed to start');
+            var deferred = this.q.defer();
+            var self = this;
+            this.signalrConnection.hub.start().done(function () {
+                deferred.resolve(self.signalrConnection);
             });
+
+            return deferred.promise;
         },
         getProxy: function (name) {
-            return this.signalrConnection[name];
+            var deferred = this.q.defer();
+            var self = this;
+            this.signalrConnection[name].client._fakeHandler = function () { }; //before calling start you need at least one sub http://www.asp.net/signalr/overview/signalr-20/hubs-api/hubs-api-guide-javascript-client
+            this.connect().then(function () {
+                deferred.resolve(self.signalrConnection[name]);
+            });
+            return deferred.promise;
         }
     };
 

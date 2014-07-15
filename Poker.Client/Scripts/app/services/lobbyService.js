@@ -1,20 +1,26 @@
-﻿(function(ng, app) {
+﻿(function(ng, app, signalr) {
 
     function lobbyService($rootScope, signalrService) {
         this.rootScope = $rootScope;
-        this.lobbyProxy = signalrService.getProxy('lobby');
-        this.lobbyProxy.client.gamesAvailable = ng.bind(this, this.gamesAvailable);
+        this.signalrService = signalrService;
+        
+        var self = this;
+        signalrService.getProxy('lobby').then(function (proxy) {
+            self.lobbyProxy = proxy;
+            proxy.on('gamesAvailable', ng.bind(self, self.gamesAvailable));
+            proxy.server.checkAvailableGames();
+        });
     };
 
     lobbyService.prototype = {
-        checkGames: function() {
+        checkGames: function () {
             this.lobbyProxy.server.checkAvailableGames();
         },
-        gamesAvailable: function(games) {
+        gamesAvailable: function (games) {
             this.rootScope.$emit('gamesAvailable', games);
         }
     };
 
     app.service('lobbyService', lobbyService);
 
-})(angular, angular.module('poker'));
+})(angular, angular.module('poker'), $.connection);

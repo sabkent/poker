@@ -13,8 +13,13 @@ namespace Poker.Client.Hubs
         {
             Clients.All.gamesAvailable(new List<GameListItem>
             {
-                new GameListItem {Name = "No holes barred"}
+                new GameListItem {Id = Guid.NewGuid(), Name = "No holes barred"}
             });
+        }
+
+        public void RequestGameSummary(Guid gameId)
+        {
+            Clients.All.onGameSummaryReceived(new GameSummary{Id = Guid.NewGuid(), Name = "Summary"});
         }
     }
 }

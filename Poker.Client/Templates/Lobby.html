@@ -1,0 +1,5 @@
+﻿<div data-ng-repeat="game in games">
+    <a href="#/game/{{game.Id}}">{{game.Name}}</a>
+</div>
+
+<input type="button" value="check games" data-ng-click="refreshGames()" />

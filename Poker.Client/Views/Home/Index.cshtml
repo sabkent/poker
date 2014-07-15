@@ -2,22 +2,31 @@
     ViewBag.Title = "Home Page";
 }
 
-<div data-ng-app="poker" data-ng-controller="lobbyController">
-    <input type="button" data-ng-click="refreshGames()" value="refresh" />
-    
-    <div data-ng-repeat="game in games" data-ng-cloak>{{game.Name}}</div>
-
-    <input type="button" data-ng-click="joinGame()" />
+<div data-ng-app="poker">
+    <div data-ng-view></div>
 </div>
 
 @section scripts{
     <script>
-        var app = angular.module('poker', []).run(function(signalrService) {
-            signalrService.connect();
+        var app = angular.module('poker', ['ngRoute']);
+
+        app.config(function($routeProvider) {
+            $routeProvider.when('/', {
+                    controller: 'lobbyController',
+                    templateUrl: '/templates/lobby.html'
+                }).when('/game/:id', {
+                    controller: 'gameSummaryController',
+                    templateUrl :'/templates/gamesummary.html'
+                })
+                .otherwise({
+                    redirectTo: '/'
+                });
         });
     </script>
 
     <script src="~/Scripts/app/controllers/LobbyController.js"></script>
     <script src="~/Scripts/app/services/signalrHubService.js"></script>
     <script src="~/Scripts/app/services/lobbyService.js"></script>
+    <script src="~/Scripts/app/services/GameService.js"></script>
+    <script src="~/Scripts/app/controllers/GameSummaryController.js"></script>
 }

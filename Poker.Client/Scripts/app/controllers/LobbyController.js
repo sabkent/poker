@@ -1,28 +1,31 @@
-﻿(function (ng, app) {
-    function lobbyController($scope, lobbyService) {
-        this.lobbyService = lobbyService;
-        
-        $scope.joinGame = ng.bind(this, this.joinGame);
-        $scope.refreshGames = ng.bind(this, this.refreshGames);
+﻿(function(ng, app) {
+        function lobbyController($scope, lobbyService) {
+            this.lobbyService = lobbyService;
 
-        $scope.games = [];
-        this.scope = $scope;
-        this.scope.$parent.$on('gamesAvailable', ng.bind(this, this))
-        
-        
-        return this;
-    };
+            $scope.joinGame = ng.bind(this, this.joinGame);
+            $scope.refreshGames = ng.bind(this, this.refreshGames);
 
-    lobbyController.prototype = {
-        
-        refreshGames: function () {
-            this.lobbyService.checkGames();
-        },
-        joinGame: function () {
-            
-        },
-        gamesAvailable : function(games) {
-            
+            $scope.games = [];
+            this.scope = $scope;
+            this.scope.$parent.$on('gamesAvailable', ng.bind(this, this.gamesAvailable));
+            this.scope.$parent.$on('serverConnectionEstablished', ng.bind(this, this.onServerConnectionEstablished));
+
+            return this;
+        };
+
+        lobbyController.prototype = {
+            refreshGames: function() {
+                this.lobbyService.checkGames();
+            },
+            joinGame: function() {
+
+            },
+            gamesAvailable: function(e, games) {
+                this.scope.games = this.scope.games.concat(games);
+                this.scope.$apply();
+            },
+            onServerConnectionEstablished : function() {
+                this.refreshGames();
         }
     };
 

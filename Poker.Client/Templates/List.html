@@ -1,0 +1,10 @@
+﻿<table>
+    <tr>
+        <td>Sender</td>
+        <td>Subject</td>
+    </tr>
+    <tr data-ng-repeat="message in messages">
+        <td>{{message.sender}}</td>
+        <td><a href="#/view/{{message.id}}">{{message.subject}}</a></td>
+    </tr>
+</table>
