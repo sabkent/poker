@@ -35,6 +35,8 @@ namespace Poker.Client.Hubs
 
         public async Task RequestBuyIn(Guid gameId)
         {
+            await Groups.Add(Context.ConnectionId, "game/" + gameId);
+
             await _gameServiceProxy.BuyIn(gameId);
 
             //Groups.Add(Context.ConnectionId, "game/")

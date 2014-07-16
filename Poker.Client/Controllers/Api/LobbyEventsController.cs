@@ -21,7 +21,7 @@ namespace Poker.Client.Controllers.Api
         public HttpResponseMessage Player(PlayerJoinedGame playerJoinedGame)
         {
             var hubContext = _connectionManager.GetHubContext<Lobby>();
-            hubContext.Clients.All.playerJoinedGame(playerJoinedGame);
+            hubContext.Clients.Group("game/" + playerJoinedGame.GameId).playerJoinedGame(playerJoinedGame);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
