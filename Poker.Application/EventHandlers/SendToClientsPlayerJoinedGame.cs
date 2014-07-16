@@ -22,7 +22,9 @@ namespace Poker.Application.EventHandlers
             {
                 httpClient.BaseAddress = new Uri(_clientNotificationEndpoint);
                 var payLoad = JsonConvert.SerializeObject(playerJoinedGame);
-                var response = await httpClient.PostAsync("/api/events/players", new StringContent(payLoad, Encoding.UTF8, "application/json"));
+                var response = await httpClient.PostAsync("/api/lobby-events/players", new StringContent(payLoad, Encoding.UTF8, "application/json"));
+                if(response.IsSuccessStatusCode == false)
+                    throw new Exception();
             }
         }
     }

@@ -23,16 +23,32 @@ namespace Poker.Api.Controllers
 
         public HttpResponseMessage Get()
         {
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var games = new List<Game>
+            {
+                new Game { Id = Guid.NewGuid(), Name = "Game One"}
+            };
+
+            return Request.CreateResponse(HttpStatusCode.OK, games);
+        }
+
+        public HttpResponseMessage Get(Guid id)
+        {
+            var gameSummary = new Game
+            {
+                Id = id,
+                Name = "summary"
+            };
+
+            return Request.CreateResponse(HttpStatusCode.OK, gameSummary);
         }
 
         [HttpPost, Route("{gameid}/players")]
-        public HttpResponseMessage Join(Guid gameId, GamePlayer gamePlayer)
+        public HttpResponseMessage JoinGame(Guid gameId, GamePlayer gamePlayer)
         {
             Guid id = Guid.NewGuid(); //we have id of game and id of player then we gen id of instance of this player in this game
 
 
-            var joinGame = new JoinGame();
+            var joinGame = new JoinGame(gameId, id);
 
             _commandDispatcher.Dispatch(joinGame);
 

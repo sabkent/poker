@@ -14,11 +14,13 @@
             $routeProvider.when('/', {
                     controller: 'lobbyController',
                     templateUrl: '/templates/lobby.html'
-                }).when('/game/:id', {
+                }).when('/game-summary/:id', {
                     controller: 'gameSummaryController',
-                    templateUrl :'/templates/gamesummary.html'
-                })
-                .otherwise({
+                    templateUrl: '/templates/gamesummary.html'
+                }).when('/game/:id', {
+                    controller: 'gameController',
+                    templateUrl :'/templates/game.html'
+                }).otherwise({
                     redirectTo: '/'
                 });
         });
@@ -27,6 +29,7 @@
     <script src="~/Scripts/app/controllers/LobbyController.js"></script>
     <script src="~/Scripts/app/services/signalrHubService.js"></script>
     <script src="~/Scripts/app/services/lobbyService.js"></script>
+    <script src="~/Scripts/app/controllers/GameController.js"></script>
     <script src="~/Scripts/app/services/GameService.js"></script>
     <script src="~/Scripts/app/controllers/GameSummaryController.js"></script>
 }

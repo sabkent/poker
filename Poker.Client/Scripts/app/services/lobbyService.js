@@ -1,4 +1,4 @@
-﻿(function(ng, app, signalr) {
+﻿(function(ng, app) {
 
     function lobbyService($rootScope, signalrService) {
         this.rootScope = $rootScope;
@@ -23,4 +23,4 @@
 
     app.service('lobbyService', lobbyService);
 
-})(angular, angular.module('poker'), $.connection);
+})(angular, angular.module('poker'));

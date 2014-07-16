@@ -1,25 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.SignalR;
 using Poker.Client.Models;
+using Poker.Client.Proxies;
 
 namespace Poker.Client.Hubs
 {
     public class Lobby : Hub
     {
-        public void CheckAvailableGames()
+        private readonly IGameServiceProxy _gameServiceProxy;
+
+        public Lobby(IGameServiceProxy gameServiceProxy)
         {
-            Clients.All.gamesAvailable(new List<GameListItem>
-            {
-                new GameListItem {Id = Guid.NewGuid(), Name = "No holes barred"}
-            });
+            _gameServiceProxy = gameServiceProxy;
         }
 
-        public void RequestGameSummary(Guid gameId)
+        public async void CheckAvailableGames()
         {
-            Clients.All.onGameSummaryReceived(new GameSummary{Id = Guid.NewGuid(), Name = "Summary"});
+            var games = await _gameServiceProxy.GetGames();
+
+            Clients.Caller.gamesAvailable(games);
+        }
+
+        public async void RequestGameSummary(Guid gameId)
+        {
+            var gameSummary = await _gameServiceProxy.GetGame(gameId);
+
+            Clients.Caller.onGameSummaryReceived(gameSummary);
+        }
+
+        public async Task RequestBuyIn(Guid gameId)
+        {
+            await _gameServiceProxy.BuyIn(gameId);
+
+            //Groups.Add(Context.ConnectionId, "game/")
+
+            //buy in record is created first regardless
+            //we then check this record for its status, for longer than the process has timeout
+
         }
     }
 }

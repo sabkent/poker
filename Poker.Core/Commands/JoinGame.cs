@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Poker.Core.Commands
 {
     public sealed class JoinGame : ICommand
     {
+        public JoinGame(Guid gameId, Guid playerId)
+        {
+            GameId = gameId;
+            PlayerId = playerId;
+        }
+        public Guid GameId { get; private set; }
+        public Guid PlayerId { get; private set; }
     }
 }

@@ -5,9 +5,15 @@ using System.Web;
 
 namespace Poker.Client.Models.Representations
 {
-    public class PlayerJoinedGame
+    public sealed class PlayerJoinedGame
     {
-        public Guid GameId { get; set; }
-        public Guid PlayerId { get; set; }
+        public PlayerJoinedGame(Guid gameId, Guid playerId)
+        {
+            GameId = gameId;
+            PlayerId = playerId;
+        }
+
+        public Guid GameId { get; private set; }
+        public Guid PlayerId { get; private set; }
     }
 }

@@ -1,25 +1,13 @@
 ﻿(function (ng, app) {
 
-    function lobbyController($scope) {
-        $scope.joinGame = ng.bind(this, this.joinGame);
-
-        this.initializeServerConnection();
-        return this;
+    function gameController($scope) {
+        
     };
 
-    lobbyController.prototype = {
-        initializeServerConnection: function () {
-            this.activeGame = $.connection.activeGame;
-            this.activeGame.client.playerJoined = ng.bind(this, this.playerJoined);
-        },
-        joinGame: function () {
-            this.activeGame.server.joinGame();
-        },
-        playerJoined: function () {
-            console.log('player joined game');
-        }
+    gameController.prototype = {
+       
     };
 
-    app.controller('lobbyController', lobbyController);
+    app.controller('gameController', gameController);
 
 })(angular, angular.module('poker'));

@@ -21,6 +21,9 @@
         }).when('/view/:id', {
             controller: DetailController,
             templateUrl: '/templates/detail.html'
+        }).when('/game/:id', {
+            controller: 'gameController',
+            templateUrl: '/templates/game.html'
         }).otherwise({
             redirectTo: '/'
         });

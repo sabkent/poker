@@ -19,7 +19,7 @@ namespace Poker.Application.CommandHandlers
 
         public void Handle(JoinGame joinGame)
         {
-            _eventsPublisher.Publish(new PlayerJoinedGame(Guid.NewGuid(), Guid.NewGuid()));
+            _eventsPublisher.Publish(new PlayerJoinedGame(joinGame.GameId, joinGame.PlayerId));
         }
     }
 }
